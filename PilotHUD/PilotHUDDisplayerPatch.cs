@@ -7,7 +7,7 @@ using UI.PilotHUD;
 
 namespace PilotHUD
 {
-    [HarmonyPatch(typeof(PilotHUDDisplayer), "Show")]
+    [HarmonyPatch(typeof(PilotHUDDisplayer))]
     internal class PilotHUDDisplayerPatch
     {
         public static bool enabled = true;
@@ -15,7 +15,9 @@ namespace PilotHUD
 
         private static readonly MethodInfo show = AccessTools.Method(typeof(PilotHUDDisplayer), "Show");
 
-        static void Prefix(ref ShipExternalCamera.CameraType obj)
+        [HarmonyPrefix]
+        [HarmonyPatch("Show")]
+        static void PatchShow(ref ShipExternalCamera.CameraType obj)
         {
             currentCamera = obj;
             if (enabled)

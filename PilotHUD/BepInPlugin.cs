@@ -9,7 +9,7 @@ namespace PilotHUD
     {
         public const string PLUGIN_GUID = "id107.pilothud";
         public const string PLUGIN_NAME = "PilotHUD";
-        public const string PLUGIN_VERSION = "0.0.0";
+        public const string PLUGIN_VERSION = "0.0.1";
     }
 
     [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
@@ -22,6 +22,7 @@ namespace PilotHUD
         {
             Log = Logger;
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), MyPluginInfo.PLUGIN_GUID);
+            Configs.Load(this);
             Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
         }
     }
