@@ -10,7 +10,6 @@ namespace PilotHUD
     [HarmonyPatch(typeof(PilotHUDDisplayer))]
     internal class PilotHUDDisplayerPatch
     {
-        public static bool enabled = true;
         public static ShipExternalCamera.CameraType currentCamera = ShipExternalCamera.CameraType.FirstPersonCamera;
 
         private static readonly MethodInfo show = AccessTools.Method(typeof(PilotHUDDisplayer), "Show");
@@ -20,7 +19,7 @@ namespace PilotHUD
         static void PatchShow(ref ShipExternalCamera.CameraType obj)
         {
             currentCamera = obj;
-            if (enabled)
+            if (Configs.HUDVisible.Value)
             {
                 obj = ShipExternalCamera.CameraType.ThirdPersonCamera;
             }

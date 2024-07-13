@@ -9,7 +9,7 @@ namespace PilotHUD
     {
         public const string PLUGIN_GUID = "id107.pilothud";
         public const string PLUGIN_NAME = "PilotHUD";
-        public const string PLUGIN_VERSION = "0.0.1";
+        public const string PLUGIN_VERSION = "0.0.2";
     }
 
     [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]

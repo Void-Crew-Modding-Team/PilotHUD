@@ -5,12 +5,13 @@ namespace PilotHUD
 {
     internal class Configs
     {
-        internal const KeyCode ToggleHUDDefaultKey = KeyCode.None;
-        internal static ConfigEntry<KeyCode> ToggleHUDConfig;
+        internal static ConfigEntry<bool> HUDVisible;
+        internal static ConfigEntry<KeyCode> ToggleHUDKeybindConfig;
 
         internal static void Load(BepinPlugin plugin)
         {
-            ToggleHUDConfig = plugin.Config.Bind("PilotHUD", "ToggleHUD", ToggleHUDDefaultKey, "");
+            HUDVisible = plugin.Config.Bind("PilotHUD", "HUDVisible", true);
+            ToggleHUDKeybindConfig = plugin.Config.Bind("PilotHUD", "ToggleHUD", KeyCode.None);
         }
     }
 }
