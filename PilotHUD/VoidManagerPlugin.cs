@@ -1,6 +1,4 @@
-﻿using BepInEx;
-using CG;
-using CG.Input;
+﻿using CG.Input;
 using VoidManager.MPModChecks;
 
 namespace PilotHUD
@@ -12,8 +10,8 @@ namespace PilotHUD
             VoidManager.Events.Instance.LateUpdate += (_, _) =>
             {
                 if (Configs.ToggleHUDKeybindConfig.Value != UnityEngine.KeyCode.None &&
-                    UnityInput.Current.GetKeyDown(Configs.ToggleHUDKeybindConfig.Value) &&
-                    !ServiceBase<InputService>.Instance.CursorVisibilityControl.IsCursorShown)
+                    BepInEx.UnityInput.Current.GetKeyDown(Configs.ToggleHUDKeybindConfig.Value) &&
+                    !CG.ServiceBase<InputService>.Instance.CursorVisibilityControl.IsCursorShown)
                 {
                     Configs.HUDVisible.Value = !Configs.HUDVisible.Value;
                     PilotHUDDisplayerPatch.UpdateHUD();
@@ -23,8 +21,10 @@ namespace PilotHUD
 
         public override MultiplayerType MPType => MultiplayerType.Client;
 
-        public override string Author => "18107";
+        public override string Author => MyPluginInfo.PLUGIN_AUTHORS;
 
-        public override string Description => "Displays the pilot HUD when the helm is powered";
+        public override string Description => MyPluginInfo.PLUGIN_DESCRIPTION;
+
+        public override string ThunderstoreID => MyPluginInfo.PLUGIN_THUNDERSTORE_ID;
     }
 }
