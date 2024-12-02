@@ -13,7 +13,13 @@ namespace PilotHUD
             {
                 PilotHUDDisplayerPatch.UpdateHUD();
             }
+            if(GUITools.DrawCheckbox("Disable blinking 'Wayfinder Offline' text", ref Configs.DisableHUDOfflineEffects))
+            {
+                var hud = PilotHUDPowerDisplayerPatch.PilotHUD;
+                hud.PowerChanged(hud.helm.PowerDrain.IsOn.Value);
+            }
             GUITools.DrawChangeKeybindButton("Change Toggle HUD Keybind", ref Configs.ToggleHUDKeybindConfig);
+
         }
     }
 }
