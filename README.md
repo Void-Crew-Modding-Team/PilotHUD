@@ -1,26 +1,27 @@
 [![](https://img.shields.io/badge/-Void_Crew_Modding_Team-111111?style=just-the-label&logo=github&labelColor=24292f)](https://github.com/Void-Crew-Modding-Team)
-![](https://img.shields.io/badge/Game%20Version-0.27.0-111111?style=flat&labelColor=24292f&color=111111)
+![](https://img.shields.io/badge/Game%20Version-1.0.0-111111?style=flat&labelColor=24292f&color=111111)
 [![](https://img.shields.io/discord/1180651062550593536.svg?&logo=discord&logoColor=ffffff&style=flat&label=Discord&labelColor=24292f&color=111111)](https://discord.gg/g2u5wpbMGu "Void Crew Modding Discord")
 
 # Pilot HUD
 
-Version 0.0.3  
-For Game Version 0.27.0  
+Version 0.0.4  
+For Game Version 1.0.0  
 Developed by 18107  
-Requires VoidManager 1.1.8
+Requires:  BepInEx-BepInExPack-5.4.2100, VoidCrewModdingTeam-VoidManager-1.2.4
 
 
 ---------------------
 
 ### 💡 Function(s)
 
-- Displays the pilot HUD when the helm is powered
-- Toggle using GUI or keybind
+- Displays the pilot HUD.
+- Disables HUD when in a gunner seat.
+- Disables Blinking "Wayfinder Offline".
+- Toggle using GUI or keybind.
 
 ### 🎮 Client Usage
 
-- Install.
-- Toggle using GUI at F5 > Mod Settings > Pilot HUD
+- Configure using GUI at F5 > Mod Settings > Pilot HUD
 - Configure keybind at F5 > Mod Settings > Pilot HUD
 
 ### 👥 Multiplayer Functionality

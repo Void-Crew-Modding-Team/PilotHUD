@@ -7,20 +7,21 @@
 Version [ModVersion]  
 For Game Version [GameVersion]  
 Developed by [Authors]  
-Requires VoidManager [VoidManagerVersion]
+Requires: [Dependencies]
 
 
 ---------------------
 
 ### 💡 Function(s)
 
-- Displays the pilot HUD when the helm is powered
-- Toggle using GUI or keybind
+- Displays the pilot HUD.
+- Disables HUD when in a gunner seat.
+- Disables Blinking "Wayfinder Offline".
+- Toggle using GUI or keybind.
 
 ### 🎮 Client Usage
 
-- Install.
-- Toggle using GUI at F5 > Mod Settings > Pilot HUD
+- Configure using GUI at F5 > Mod Settings > Pilot HUD
 - Configure keybind at F5 > Mod Settings > Pilot HUD
 
 ### 👥 Multiplayer Functionality
