@@ -1,36 +1,26 @@
-﻿using CG.Game;
-using CG.Ship.Modules;
-using Gameplay.Helm;
+﻿using CG.Client;
+using CG.Client.Player.Interactions;
+using CG.Game.Player;
 using HarmonyLib;
-using System.Reflection;
-using UI.PilotHUD;
 
 namespace PilotHUD
 {
-    [HarmonyPatch(typeof(PilotHUDDisplayer))]
+    [HarmonyPatch(typeof(UI.PilotHUD.PilotHUD))]
     internal class PilotHUDDisplayerPatch
     {
-        public static ShipExternalCamera.CameraType currentCamera = ShipExternalCamera.CameraType.FirstPersonCamera;
-
-        private static readonly MethodInfo show = AccessTools.Method(typeof(PilotHUDDisplayer), "Show");
-
         [HarmonyPrefix]
-        [HarmonyPatch("Show")]
-        static void PatchShow(ref ShipExternalCamera.CameraType obj)
+        [HarmonyPatch("InteractionModeChanged")]
+        static void PatchShow(ref InteractionMode newMode)
         {
-            currentCamera = obj;
-            if (Configs.HUDVisible.Value)
+            if (Configs.HUDVisible.Value && !newMode.HasFlag(InteractionMode.RemoteControl))
             {
-                obj = ShipExternalCamera.CameraType.ThirdPersonCamera;
+                newMode |= InteractionMode.ShipThirdPerson | InteractionMode.Ship;
             }
         }
 
-        public static void UpdateHUD()
+        internal static void UpdateHUD()
         {
-            PilotHUDDisplayer instance = ClientGame.Current.PlayerShip?.GetModule<Helm>()?.GetComponentInChildren<PilotHUDDisplayer>();
-            if (instance == null) return;
-
-            show.Invoke(instance, new object[] { currentCamera });
+            ViewEventBus.Instance?.OnInteractionModeChanged.Publish(LocalPlayer.Instance.InteractionState.ActiveModes);
         }
     }
 }
